@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎬 Movie Recommender</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; background-color: #f5f5f5; }
+        h1 { color: #333; }
+        input { padding: 10px; width: 300px; }
+        button { padding: 10px; margin-left: 10px; }
+        ul { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>🎥 Movie Recommendation System</h1>
+    <input type="text" id="movie" placeholder="Enter movie name">
+    <button onclick="getRecommendations()">Recommend</button>
+    <ul id="results"></ul>
+
+    <script>
+        async function getRecommendations() {
+            let title = document.getElementById('movie').value;
+            let response = await fetch(`http://127.0.0.1:5000/recommend?title=${title}`);
+            let data = await response.json();
+            let results = document.getElementById('results');
+            results.innerHTML = "";
+            data.recommendations.forEach(movie => {
+                let li = document.createElement('li');
+                li.textContent = movie;
+                results.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
