@@ -27,3 +27,8 @@ This project demonstrates a full-stack ML application: backend logic, API, and a
 
 ## 📁 Project Structure
 
+movie-recommender/
+│── app.py # Backend ML + Flask API
+│── index.html # Frontend
+│── movies.csv # Movie dataset
+│── README.md # Project overview
